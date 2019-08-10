@@ -3,7 +3,7 @@
 %
 %  Instructions
 %  ------------
-% 
+%
 %  This file contains code that helps you get started on the
 %  exercise. You will need to complete the following functions:
 %
@@ -19,7 +19,7 @@
 clear ; close all; clc
 
 %% =========== Part 1: Loading and Visualizing Data =============
-%  We start the exercise by first loading and visualizing the dataset. 
+%  We start the exercise by first loading and visualizing the dataset.
 %  The following code will load the dataset into your environment and plot
 %  the data.
 %
@@ -27,7 +27,7 @@ clear ; close all; clc
 % Load Training Data
 fprintf('Loading and Visualizing Data ...\n')
 
-% Load from ex5data1: 
+% Load from ex5data1:
 % You will have X, y, Xval, yval, Xtest, ytest in your environment
 load ('ex5data1.mat');
 
@@ -35,6 +35,7 @@ load ('ex5data1.mat');
 m = size(X, 1);
 
 % Plot training data
+figure(5);
 plot(X, y, 'rx', 'MarkerSize', 10, 'LineWidth', 1.5);
 xlabel('Change in water level (x)');
 ylabel('Water flowing out of the dam (y)');
@@ -43,8 +44,8 @@ fprintf('Program paused. Press enter to continue.\n');
 pause;
 
 %% =========== Part 2: Regularized Linear Regression Cost =============
-%  You should now implement the cost function for regularized linear 
-%  regression. 
+%  You should now implement the cost function for regularized linear
+%  regression.
 %
 
 theta = [1 ; 1];
@@ -57,7 +58,7 @@ fprintf('Program paused. Press enter to continue.\n');
 pause;
 
 %% =========== Part 3: Regularized Linear Regression Gradient =============
-%  You should now implement the gradient for regularized linear 
+%  You should now implement the gradient for regularized linear
 %  regression.
 %
 
@@ -74,10 +75,10 @@ pause;
 
 %% =========== Part 4: Train Linear Regression =============
 %  Once you have implemented the cost and gradient correctly, the
-%  trainLinearReg function will use your cost function to train 
+%  trainLinearReg function will use your cost function to train
 %  regularized linear regression.
-% 
-%  Write Up Note: The data is non-linear, so this will not give a great 
+%
+%  Write Up Note: The data is non-linear, so this will not give a great
 %                 fit.
 %
 
@@ -98,10 +99,10 @@ pause;
 
 
 %% =========== Part 5: Learning Curve for Linear Regression =============
-%  Next, you should implement the learningCurve function. 
+%  Next, you should implement the learningCurve function.
 %
 %  Write Up Note: Since the model is underfitting the data, we expect to
-%                 see a graph with "high bias" -- Figure 3 in ex5.pdf 
+%                 see a graph with "high bias" -- Figure 3 in ex5.pdf
 %
 
 lambda = 0;
@@ -109,7 +110,7 @@ lambda = 0;
     learningCurve([ones(m, 1) X], y, ...
                   [ones(size(Xval, 1), 1) Xval], yval, ...
                   lambda);
-
+figure(3);
 plot(1:m, error_train, 1:m, error_val);
 title('Learning curve for linear regression')
 legend('Train', 'Cross Validation')
@@ -159,7 +160,7 @@ pause;
 
 %% =========== Part 7: Learning Curve for Polynomial Regression =============
 %  Now, you will get to experiment with polynomial regression with multiple
-%  values of lambda. The code below runs polynomial regression with 
+%  values of lambda. The code below runs polynomial regression with
 %  lambda = 0. You should try running the code with different values of
 %  lambda to see how the fit and learning curve change.
 %
@@ -196,7 +197,7 @@ fprintf('Program paused. Press enter to continue.\n');
 pause;
 
 %% =========== Part 8: Validation for Selecting Lambda =============
-%  You will now implement validationCurve to test various values of 
+%  You will now implement validationCurve to test various values of
 %  lambda on a validation set. You will then use this to select the
 %  "best" lambda value.
 %
@@ -204,7 +205,7 @@ pause;
 [lambda_vec, error_train, error_val] = ...
     validationCurve(X_poly, y, X_poly_val, yval);
 
-close all;
+%%close all;
 plot(lambda_vec, error_train, lambda_vec, error_val);
 legend('Train', 'Cross Validation');
 xlabel('lambda');
